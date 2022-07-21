@@ -3,6 +3,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:prod4_aval2_hang_game/controllers/game_controller.dart';
+import 'package:prod4_aval2_hang_game/widgets/dash.dart';
 
 class GamePage extends StatelessWidget {
   GamePage({Key? key}) : super(key: key);
@@ -13,24 +14,30 @@ class GamePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('criou a tela!');
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: [
             Expanded(
-              flex: 4,
-              child: Container(
-                color: Colors.red,
-                child: Expanded(
-                  child: Obx(
-                    () => Image.asset(gameController.imagePath.value),
+              flex: 45,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: Obx(
+                        () => Image.asset(gameController.imagePath.value),
+                      ),
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 20),
+                  Dashes(),
+                ],
               ),
             ),
             Expanded(
-              flex: 6,
+              flex: 55,
               child: Container(
                 //   color: Colors.blue,
                 child: Column(
@@ -38,6 +45,7 @@ class GamePage extends StatelessWidget {
                     ElevatedButton(
                         onPressed: () {
                           gameController.changeImagePath();
+                          gameController.makeGuess('a');
                         },
                         child: Text('Testar')),
                   ],
