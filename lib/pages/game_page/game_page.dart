@@ -11,7 +11,6 @@ class GamePage extends StatelessWidget {
   GamePage({Key? key}) : super(key: key);
 
   final imagePath = 'assets/images/hang_images/forca1.png';
-  int currentImage = 1;
   final gameController = Get.find<GameController>();
 
   @override
@@ -46,12 +45,6 @@ class GamePage extends StatelessWidget {
                 flex: 55,
                 child: Column(
                   children: [
-                    Obx(
-                      () => gameController.finishedGame.value
-                          ? SizedBox()
-                          : SizedBox(),
-                      // : SizedBox(),
-                    ),
                     Expanded(
                       child: Center(
                         child: Obx(
@@ -76,8 +69,7 @@ class GamePage extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 10),
                       child: AlphabetButtons(),
                     ),
-                    const Text(
-                        'Dupla: Leonardo Evangelista Mesquita e Arthur Mattei'),
+                    const Text('Dupla: Leonardo Mesquita e Arthur Mattei'),
                   ],
                 ),
               ),

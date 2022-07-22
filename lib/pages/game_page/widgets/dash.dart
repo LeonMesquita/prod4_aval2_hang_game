@@ -19,8 +19,10 @@ class Dashes extends StatelessWidget {
           ? const SizedBox(width: 25)
           : Dashe(letter: word[index]),
     );
-    return Wrap(
-      children: dashesList,
+    return Center(
+      child: Wrap(
+        children: dashesList,
+      ),
     );
   }
 }
@@ -38,7 +40,7 @@ class Dashe extends StatelessWidget {
           Obx(
             () => Text(
               gameController.playerGuess.value.contains(letter) ? letter : '',
-              style: TextStyle(fontSize: 30),
+              style: const TextStyle(fontSize: 30),
             ),
           ),
           Container(
