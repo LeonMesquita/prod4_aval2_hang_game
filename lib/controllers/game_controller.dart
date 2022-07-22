@@ -5,6 +5,7 @@ class GameController extends GetxController {
   RxString imagePath = 'assets/images/hang_images/forca1.png'.obs;
   RxString choosedWord = 'banana'.obs;
   RxString playerGuess = ''.obs;
+  //RxBool isCorrect = false.obs;
 
   void changeImagePath() {
     if (imageNumber.value == 8) {
@@ -18,6 +19,16 @@ class GameController extends GetxController {
     playerGuess.value += guess;
     if (!choosedWord.contains(guess)) {
       changeImagePath();
+      // isCorrect.value = false;
+    } else {
+      // isCorrect.value = true;
     }
+  }
+
+  bool isCorrect(guess) {
+    if (!choosedWord.contains(guess)) {
+      return false;
+    }
+    return true;
   }
 }

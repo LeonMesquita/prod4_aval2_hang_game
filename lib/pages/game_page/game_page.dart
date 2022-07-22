@@ -47,10 +47,15 @@ class GamePage extends StatelessWidget {
                 child: Container(
                   // color: Colors.red.shade400,
                   child: Column(
-                    children: [
+                    children: const [
                       Expanded(child: SizedBox()),
+                      Text(
+                        'Escolha uma letra',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                       Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
+                        padding: EdgeInsets.symmetric(vertical: 10),
                         child: AlphabetButtons(),
                       ),
                     ],
