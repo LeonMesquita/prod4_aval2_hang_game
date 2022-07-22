@@ -5,8 +5,10 @@ const _basePath = 'assets/images/hang_images/';
 class GameController extends GetxController {
   RxInt imageNumber = 1.obs;
   RxString imagePath = '${_basePath}forca1.png'.obs;
-  RxString choosedWord = 'banana'.obs;
+  RxString choosedWord = 'banana doce'.obs;
+  RxString choosedHint = 'É doce'.obs;
   RxString playerGuess = ''.obs;
+  RxBool showHint = false.obs;
 
   bool isCorrect(guess) {
     if (!choosedWord.contains(guess)) {
@@ -18,11 +20,15 @@ class GameController extends GetxController {
   void makeGuess(guess) {
     playerGuess.value += guess;
     if (!isCorrect(guess)) {
-      if (imageNumber.value == 8) {
+      if (imageNumber.value == 7) {
         return;
       }
       imageNumber.value++;
       imagePath.value = '${_basePath}forca$imageNumber.png';
+      //
+      if (imageNumber.value == 5) {
+        showHint.value = true;
+      }
     }
   }
 }
