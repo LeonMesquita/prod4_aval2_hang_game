@@ -16,5 +16,8 @@ class GameController extends GetxController {
 
   void makeGuess(guess) {
     playerGuess.value += guess;
+    if (!choosedWord.contains(guess)) {
+      changeImagePath();
+    }
   }
 }
