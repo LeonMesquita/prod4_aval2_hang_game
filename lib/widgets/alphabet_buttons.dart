@@ -36,7 +36,7 @@ class AlphButton extends StatefulWidget {
   final String buttonText;
   final Function() onpress;
 
-  AlphButton({Key? key, required this.buttonText, required this.onpress})
+  const AlphButton({Key? key, required this.buttonText, required this.onpress})
       : super(key: key);
 
   @override
@@ -49,7 +49,9 @@ class _AlphButtonState extends State<AlphButton> {
 
   @override
   Widget build(BuildContext context) {
-    Color statusColor =
+    //Verifica se a palavra contém a letra deste botão
+    //se tiver, ele fica verde
+    final statusColor =
         gameController.isCorrect(widget.buttonText.toLowerCase())
             ? Colors.green
             : Colors.red;
