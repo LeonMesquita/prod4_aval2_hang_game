@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:prod4_aval2_hang_game/controllers/game_controller.dart';
+import 'package:prod4_aval2_hang_game/page_routes/app_pages.dart';
 
 class AlphabetButtons extends StatelessWidget {
   const AlphabetButtons({Key? key}) : super(key: key);
@@ -46,6 +47,22 @@ class AlphButton extends StatefulWidget {
 class _AlphButtonState extends State<AlphButton> {
   bool isSelected = false;
   final gameController = Get.find<GameController>();
+  void _showDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Fim do jogo'),
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              Get.toNamed(PagesRoutes.resultPage);
+            },
+            child: const Text('Prosseguir para resultados'),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,21 +81,29 @@ class _AlphButtonState extends State<AlphButton> {
           color: !isSelected ? Colors.blue : statusColor,
           borderRadius: BorderRadius.circular(5),
         ),
-        child: TextButton(
-          onPressed: !isSelected
-              ? () {
-                  widget.onpress();
-                  setState(() {
-                    isSelected = true;
-                  });
-                }
-              : null,
-          child: Text(
-            widget.buttonText,
-            style: const TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
-          ),
-        ),
+        child: Obx(() => TextButton(
+              onPressed: !isSelected && !gameController.isFinished()
+                  ? () {
+                      widget.onpress();
+                      setState(() {
+                        isSelected = true;
+                      });
+
+                      if (gameController.finishedGame.value) {
+                        _showDialog();
+                      }
+                    }
+                  : () {
+                      gameController.isFinished() ? _showDialog() : null;
+                    },
+              child: Text(
+                widget.buttonText,
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Colors.white),
+              ),
+            )),
       ),
     );
   }

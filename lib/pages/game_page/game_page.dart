@@ -3,19 +3,18 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:prod4_aval2_hang_game/controllers/game_controller.dart';
-import 'package:prod4_aval2_hang_game/widgets/alphabet_buttons.dart';
-import 'package:prod4_aval2_hang_game/widgets/dash.dart';
+
+import 'widgets/alphabet_buttons.dart';
+import 'widgets/dash.dart';
 
 class GamePage extends StatelessWidget {
   GamePage({Key? key}) : super(key: key);
 
   final imagePath = 'assets/images/hang_images/forca1.png';
-  int currentImage = 1;
   final gameController = Get.find<GameController>();
 
   @override
   Widget build(BuildContext context) {
-    print('criou a tela!');
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -44,22 +43,34 @@ class GamePage extends StatelessWidget {
               //
               Expanded(
                 flex: 55,
-                child: Container(
-                  // color: Colors.red.shade400,
-                  child: Column(
-                    children: const [
-                      Expanded(child: SizedBox()),
-                      Text(
-                        'Escolha uma letra',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Center(
+                        child: Obx(
+                          () => Text(
+                            gameController.showHint.value
+                                ? 'Dica: ${gameController.choosedHint.value}'
+                                : '',
+                            style: const TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: AlphabetButtons(),
-                      ),
-                    ],
-                  ),
+                    ),
+                    const Text(
+                      'Escolha uma letra',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: AlphabetButtons(),
+                    ),
+                    const Text('Dupla: Leonardo Mesquita e Arthur Mattei'),
+                  ],
                 ),
               ),
             ],
