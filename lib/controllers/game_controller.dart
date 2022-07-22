@@ -9,6 +9,7 @@ class GameController extends GetxController {
   RxString choosedHint = 'É doce'.obs;
   RxString playerGuess = ''.obs;
   RxBool showHint = false.obs;
+  RxBool finishedGame = false.obs;
 
   bool isCorrect(guess) {
     if (!choosedWord.contains(guess)) {
@@ -17,17 +18,31 @@ class GameController extends GetxController {
     return true;
   }
 
+  bool isFinished() {
+    if (finishedGame.value) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   void makeGuess(guess) {
-    playerGuess.value += guess;
-    if (!isCorrect(guess)) {
-      if (imageNumber.value == 7) {
-        return;
-      }
-      imageNumber.value++;
-      imagePath.value = '${_basePath}forca$imageNumber.png';
-      //
-      if (imageNumber.value == 5) {
-        showHint.value = true;
+    if (!finishedGame.value) {
+      playerGuess.value += guess;
+      if (!isCorrect(guess)) {
+        if (finishedGame.value) {
+          return;
+        }
+        imageNumber.value++;
+        imagePath.value = '${_basePath}forca$imageNumber.png';
+        //
+        if (imageNumber.value == 5) {
+          showHint.value = true;
+        }
+        if (imageNumber.value == 7) {
+          finishedGame.value = true;
+          return;
+        }
       }
     }
   }

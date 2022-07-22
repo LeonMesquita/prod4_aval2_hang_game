@@ -16,7 +16,6 @@ class GamePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('criou a tela!');
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -47,6 +46,12 @@ class GamePage extends StatelessWidget {
                 flex: 55,
                 child: Column(
                   children: [
+                    Obx(
+                      () => gameController.finishedGame.value
+                          ? SizedBox()
+                          : SizedBox(),
+                      // : SizedBox(),
+                    ),
                     Expanded(
                       child: Center(
                         child: Obx(
@@ -71,6 +76,8 @@ class GamePage extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 10),
                       child: AlphabetButtons(),
                     ),
+                    const Text(
+                        'Dupla: Leonardo Evangelista Mesquita e Arthur Mattei'),
                   ],
                 ),
               ),
