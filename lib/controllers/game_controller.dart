@@ -31,9 +31,11 @@ class GameController extends GetxController {
     if (!finishedGame.value) {
       playerGuess.value += guess;
       if (!isCorrect(guess)) {
+        //
         if (finishedGame.value) {
           return;
         }
+        //
         imageNumber.value++;
         imagePath.value = '${_basePath}forca$imageNumber.png';
         //

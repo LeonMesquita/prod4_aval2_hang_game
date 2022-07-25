@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:prod4_aval2_hang_game/controllers/game_controller.dart';
 import 'package:prod4_aval2_hang_game/page_routes/app_pages.dart';
 
@@ -55,7 +56,7 @@ class _AlphButtonState extends State<AlphButton> {
         actions: [
           ElevatedButton(
             onPressed: () {
-              Get.toNamed(PagesRoutes.resultPage);
+              Get.offNamed(PagesRoutes.resultPage);
             },
             child: const Text('Prosseguir para resultados'),
           ),

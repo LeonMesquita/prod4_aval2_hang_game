@@ -10,12 +10,12 @@ abstract class AppPages {
     ),
     GetPage(
       name: PagesRoutes.resultPage,
-      page: () => ResultPage(),
-    )
+      page: () => const ResultPage(),
+    ),
   ];
 }
 
 abstract class PagesRoutes {
   static const String gamePage = '/game';
-  static const String resultPage = '/game/result';
+  static const String resultPage = '/result';
 }
