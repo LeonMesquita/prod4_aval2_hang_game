@@ -13,6 +13,8 @@ class Dashes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final word = gameController.choosedWord.value;
+    //
+    //
     final dashesList = List<Widget>.generate(
       word.length,
       (index) => word[index] == ' '
