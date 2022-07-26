@@ -26,8 +26,16 @@ class WordsBank {
       hint: 'banda de heavy metal',
     ),
     Word(
+      word: 'Variável Global',
+      hint: 'variável usada por amadores',
+    ),
+    Word(
       word: 'alan turing',
       hint: 'pai da computação',
+    ),
+    Word(
+      word: 'Mark Zuckerberg',
+      hint: 'programador que criou o facebook',
     ),
   ];
 

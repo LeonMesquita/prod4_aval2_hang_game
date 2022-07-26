@@ -4,6 +4,8 @@ import 'package:prod4_aval2_hang_game/page_routes/app_pages.dart';
 import 'package:prod4_aval2_hang_game/pages/game_page/game_page.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
+import 'package:prod4_aval2_hang_game/pages/main_page.dart';
+import 'package:prod4_aval2_hang_game/theme/theme.dart';
 
 void main() {
   Get.lazyPut<GameController>(() => GameController());
@@ -18,9 +20,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Hang Game',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: HangTheme.theme,
+      home: HomePage(),
       initialRoute: PagesRoutes.mainPage,
       getPages: AppPages.pages,
     );

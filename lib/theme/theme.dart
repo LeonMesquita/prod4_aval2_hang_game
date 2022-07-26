@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HangTheme {
-  static const MaterialColor blue = MaterialColor(
+  static const MaterialColor color = MaterialColor(
     _hangPrimaryValue,
     <int, Color>{
       50: Color(0xFFE3F2FD),
@@ -15,9 +15,10 @@ class HangTheme {
       700: Color(0xFF1976D2),
       800: Color(0xFF1565C0),
       900: Color(0xFF0D47A1),
+      1000: Color(0xFFD50000),
     },
   );
-  static const int _hangPrimaryValue = 0xFF2196F3;
+  static const int _hangPrimaryValue = 0xFFD50000;
 
   static const Color background = Color(0xFF90CAF9);
 
@@ -38,8 +39,8 @@ class HangTheme {
   static ThemeData theme = ThemeData(
     brightness: Brightness.dark,
     scaffoldBackgroundColor: background,
-    primarySwatch: Colors.blue,
-    primaryColor: Colors.grey,
+    primarySwatch: color,
+    primaryColor: color,
     textTheme: GoogleFonts.wendyOneTextTheme(
       ThemeData.dark().textTheme,
     ),
