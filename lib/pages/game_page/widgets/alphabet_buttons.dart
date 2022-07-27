@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:prod4_aval2_hang_game/controllers/game_controller.dart';
+import 'package:prod4_aval2_hang_game/controllers/player_controller.dart';
 import 'package:prod4_aval2_hang_game/page_routes/app_pages.dart';
 
 class AlphabetButtons extends StatelessWidget {
@@ -48,6 +49,7 @@ class AlphButton extends StatefulWidget {
 class _AlphButtonState extends State<AlphButton> {
   bool isSelected = false;
   final gameController = Get.find<GameController>();
+  final playerController = Get.find<PlayerController>();
   void _showDialog() {
     showDialog(
       context: context,
@@ -91,6 +93,11 @@ class _AlphButtonState extends State<AlphButton> {
                       });
 
                       if (gameController.finishedGame.value) {
+                        if (gameController.winner.value == 'player') {
+                          playerController.definePlayerVictory();
+                        } else {
+                          playerController.defineMachineVictory();
+                        }
                         _showDialog();
                       }
                     }

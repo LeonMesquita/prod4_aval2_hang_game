@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prod4_aval2_hang_game/controllers/game_controller.dart';
+import 'package:prod4_aval2_hang_game/controllers/player_controller.dart';
 import 'package:prod4_aval2_hang_game/page_routes/app_pages.dart';
 import 'package:prod4_aval2_hang_game/pages/game_page/game_page.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,7 @@ import 'package:prod4_aval2_hang_game/theme/theme.dart';
 
 void main() {
   Get.lazyPut<GameController>(() => GameController());
+  Get.lazyPut<PlayerController>(() => PlayerController());
   runApp(const MyApp());
 }
 

@@ -1,8 +1,11 @@
 import 'package:get/state_manager.dart';
 
+import '../models/words_bank.dart';
+
 const _basePath = 'assets/images/hang_images/';
 
 class GameController extends GetxController {
+  final wordsList = WordsBank();
   RxInt imageNumber = 1.obs;
   RxString imagePath = '${_basePath}forca1.png'.obs;
   RxString choosedWord = ''.obs;
@@ -11,10 +14,12 @@ class GameController extends GetxController {
   RxString correctGuesses = ''.obs;
   RxBool showHint = false.obs;
   RxBool finishedGame = false.obs;
+  RxString winner = ''.obs;
 
-  void setWord(word, hint) {
-    choosedWord.value = word;
-    choosedHint.value = hint;
+  void startGame() {
+    final selectedWord = wordsList.chooseWord();
+    choosedWord.value = selectedWord.word;
+    choosedHint.value = selectedWord.hint;
   }
 
   bool isCorrect(guess) {
@@ -49,6 +54,7 @@ class GameController extends GetxController {
         }
         if (imageNumber.value == 7) {
           finishedGame.value = true;
+          winner.value = 'machine';
           return;
         }
       } else {
@@ -69,6 +75,22 @@ class GameController extends GetxController {
         });
     if (isAllCorrect) {
       finishedGame.value = true;
+      winner.value = 'player';
     }
+  }
+
+  void reseteGame() {
+    imageNumber.value = 1;
+    imagePath.value = '${_basePath}forca1.png';
+    choosedWord.value = '';
+    choosedHint.value = '';
+    playerGuess.value = '';
+    correctGuesses.value = '';
+    showHint.value = false;
+    finishedGame.value = false;
+    winner.value = '';
+
+    //
+    startGame();
   }
 }

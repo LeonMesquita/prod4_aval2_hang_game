@@ -54,9 +54,10 @@ class GamePage extends StatelessWidget {
                                 ? 'Dica: ${gameController.choosedHint.value}'
                                 : '',
                             style: const TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                            ),
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       ),

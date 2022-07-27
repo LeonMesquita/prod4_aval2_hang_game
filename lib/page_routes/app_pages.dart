@@ -11,7 +11,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: PagesRoutes.resultPage,
-      page: () => const ResultPage(),
+      page: () => ResultPage(),
     ),
     GetPage(
       name: PagesRoutes.mainPage,

@@ -12,9 +12,6 @@ import 'game_page/widgets/logo.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
-  // instancia da lista de palavras
-  final wordsList = WordsBank();
-
 //
 //instancia do controlador do jogo que foi salva na memória ao iniciar o app
 //é atravez dela que vai ser definido a palavra e a dica
@@ -51,8 +48,6 @@ class HomePage extends StatelessWidget {
                 title: 'Play',
                 color: Colors.white,
                 action: () {
-                  final selectedWord = wordsList.chooseWord();
-                  gameController.setWord(selectedWord.word, selectedWord.hint);
                   Get.offNamed(PagesRoutes.gamePage);
                 }),
             StartButton(title: 'Result', color: HangTheme.color, action: () {}),
