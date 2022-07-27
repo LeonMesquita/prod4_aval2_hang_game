@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:prod4_aval2_hang_game/theme/theme.dart';
 
 class ResultPage extends StatelessWidget {
@@ -8,9 +6,9 @@ class ResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.blueAccent,
-      child: Padding(
+    return Scaffold(
+      backgroundColor: Colors.blueAccent,
+      body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +28,6 @@ class ResultPage extends StatelessWidget {
               trailing: const Icon(Icons.chevron_right),
             ),
             const SizedBox(height: 60),
-            const ResultPage(),
           ],
         ),
       ),

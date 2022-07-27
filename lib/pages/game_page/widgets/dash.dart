@@ -42,7 +42,7 @@ class Dashe extends StatelessWidget {
           Obx(
             () => Text(
               gameController.playerGuess.value.contains(letter) ? letter : '',
-              style: const TextStyle(fontSize: 30),
+              style: const TextStyle(fontSize: 30, color: Colors.black),
             ),
           ),
           Container(

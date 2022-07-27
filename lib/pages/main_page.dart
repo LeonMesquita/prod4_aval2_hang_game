@@ -47,7 +47,14 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Logo(),
-            StartButton(title: 'Play', color: Colors.white, action: () {}),
+            StartButton(
+                title: 'Play',
+                color: Colors.white,
+                action: () {
+                  final selectedWord = wordsList.chooseWord();
+                  gameController.setWord(selectedWord.word, selectedWord.hint);
+                  Get.offNamed(PagesRoutes.gamePage);
+                }),
             StartButton(title: 'Result', color: HangTheme.color, action: () {}),
           ],
         ),
