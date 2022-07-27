@@ -23,15 +23,38 @@ class ResultPage extends StatelessWidget {
         padding: const EdgeInsets.all(12.0),
         child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text('Vencedor: $winner'),
-            Text('placar:'),
-            Text('Máquina: ${playerController.machine.value.totalWins}'),
-            Text('Jogador: ${playerController.player.value.totalWins}'),
-            Text('estatísticas da partida:'),
-            Text('Palavra escolhida: ${gameController.choosedWord.value}'),
-            Text('Dica: ${gameController.choosedHint.value}'),
             Text(
-                'Porcentagem de acerto: ${correctPercent.toStringAsFixed(0)}%'),
+              'Vencedor: $winner',
+              style: TextStyle(fontSize: 24),
+            ),
+            Text(
+              'placar:',
+              style: TextStyle(fontSize: 24),
+            ),
+            Text(
+              'Máquina: ${playerController.machine.value.totalWins}',
+              style: TextStyle(fontSize: 24),
+            ),
+            Text(
+              'Jogador: ${playerController.player.value.totalWins}',
+              style: TextStyle(fontSize: 24),
+            ),
+            Text(
+              'estatísticas da partida:',
+              style: TextStyle(fontSize: 24),
+            ),
+            Text(
+              'Palavra escolhida: ${gameController.choosedWord.value}',
+              style: TextStyle(fontSize: 24),
+            ),
+            Text(
+              'Dica: ${gameController.choosedHint.value}',
+              style: TextStyle(fontSize: 24),
+            ),
+            Text(
+              'Porcentagem de acerto: ${correctPercent.toStringAsFixed(0)}%',
+              style: TextStyle(fontSize: 24),
+            ),
             ElevatedButton(
               onPressed: () {
                 gameController.reseteGame();
