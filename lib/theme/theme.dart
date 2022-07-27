@@ -15,10 +15,10 @@ class HangTheme {
       700: Color(0xFF1976D2),
       800: Color(0xFF1565C0),
       900: Color(0xFF0D47A1),
-      1000: Color(0xFFD50000),
+      1000: Color(0xFFFF6F00),
     },
   );
-  static const int _hangPrimaryValue = 0xFFD50000;
+  static const int _hangPrimaryValue = 0xFFFF6F00;
 
   static const Color background = Color(0xFF90CAF9);
 

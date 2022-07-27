@@ -16,21 +16,25 @@ class ResultPage extends StatelessWidget {
     final correctPercent = gameController.calcCorrectPercent();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Resultados'),
+        title: const Text(
+          'Resultados',
+          style: TextStyle(color: HangTheme.color),
+        ),
       ),
       //   backgroundColor: Colors.blueAccent,
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text('Vencedor: $winner'),
-            Text('placar:'),
-            Text('Máquina: ${playerController.machine.value.totalWins}'),
-            Text('Jogador: ${playerController.player.value.totalWins}'),
-            Text('estatísticas da partida:'),
-            Text('Palavra escolhida: ${gameController.choosedWord.value}'),
-            Text('Dica: ${gameController.choosedHint.value}'),
-            Text(
+            textoSupimpa('Vencedor: $winner'),
+            textoSupimpa('placar:'),
+            textoSupimpa(
+                'Máquina: ${playerController.machine.value.totalWins}'),
+            textoSupimpa('Jogador: ${playerController.player.value.totalWins}'),
+            textoSupimpa(
+                'Palavra escolhida: ${gameController.choosedWord.value}'),
+            textoSupimpa('Dica: ${gameController.choosedHint.value}'),
+            textoSupimpa(
                 'Porcentagem de acerto: ${correctPercent.toStringAsFixed(0)}%'),
             ElevatedButton(
               onPressed: () {
@@ -44,4 +48,11 @@ class ResultPage extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget textoSupimpa(texto) {
+  return Text(
+    texto,
+    style: const TextStyle(fontSize: 24, color: HangTheme.color),
+  );
 }
