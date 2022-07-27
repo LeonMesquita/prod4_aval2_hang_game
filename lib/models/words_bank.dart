@@ -34,7 +34,7 @@ class WordsBank {
       hint: 'pai da computação',
     ),
     Word(
-      word: 'mark Zuckerberg',
+      word: 'mark zuckerberg',
       hint: 'programador que criou o facebook',
     ),
   ];

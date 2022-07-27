@@ -5,6 +5,9 @@ import 'package:prod4_aval2_hang_game/controllers/game_controller.dart';
 import 'package:prod4_aval2_hang_game/controllers/player_controller.dart';
 import 'package:prod4_aval2_hang_game/page_routes/app_pages.dart';
 
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
+
 class AlphabetButtons extends StatelessWidget {
   const AlphabetButtons({Key? key}) : super(key: key);
 
@@ -19,13 +22,27 @@ class AlphabetButtons extends StatelessWidget {
       zCode - aCode + 1,
       (index) => String.fromCharCode(aCode + index),
     );
-
     final buttons = List<AlphButton>.generate(
       alphabets.length,
       (index) => AlphButton(
         buttonText: alphabets[index],
         onpress: () {
           gameController.makeGuess(alphabets[index].toLowerCase());
+          showTopSnackBar(
+            context,
+            CustomSnackBar.info(
+              message: gameController.isCorrect(alphabets[index].toLowerCase())
+                  ? "Você acertou!"
+                  : 'Você errou!',
+              backgroundColor: Colors.black.withOpacity(0.8),
+              icon: const SizedBox(),
+            ),
+            dismissType: DismissType.onSwipe,
+            displayDuration: const Duration(seconds: 1),
+            reverseAnimationDuration: const Duration(milliseconds: 500),
+            animationDuration: const Duration(milliseconds: 500),
+          );
+          //  showSnackbar(context);
         },
       ),
     );
@@ -69,7 +86,10 @@ class _AlphButtonState extends State<AlphButton> {
               onPressed: () {
                 Get.offNamed(PagesRoutes.resultPage);
               },
-              child: const Text('Prosseguir para resultados'),
+              child: const Text(
+                'Prosseguir para resultados',
+                style: TextStyle(fontSize: 15),
+              ),
             ),
           ),
         ],
@@ -83,15 +103,17 @@ class _AlphButtonState extends State<AlphButton> {
     //se tiver, ele fica verde
     final statusColor =
         gameController.isCorrect(widget.buttonText.toLowerCase())
-            ? Color.fromARGB(255, 15, 218, 21)
-            : Color.fromARGB(255, 245, 27, 11);
+            ? const Color.fromARGB(255, 15, 218, 21)
+            : const Color.fromARGB(255, 245, 27, 11);
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
         height: 32,
         width: 32,
         decoration: BoxDecoration(
-          color: !isSelected ? Color.fromARGB(255, 4, 136, 243) : statusColor,
+          color: !isSelected
+              ? const Color.fromARGB(255, 4, 136, 243)
+              : statusColor,
           borderRadius: BorderRadius.circular(5),
         ),
         child: Obx(() => TextButton(

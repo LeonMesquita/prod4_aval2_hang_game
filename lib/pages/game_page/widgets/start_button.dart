@@ -26,7 +26,7 @@ class StartButton extends StatelessWidget {
           children: [
             Text(
               title,
-              style: const TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 25),
             )
           ],
         ),
