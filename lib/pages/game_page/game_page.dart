@@ -71,7 +71,10 @@ class GamePage extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 10),
                       child: AlphabetButtons(),
                     ),
-                    const Text('Dupla: Leonardo Mesquita e Arthur Mattei'),
+                    const Text(
+                      'Dupla: Leonardo Mesquita e Arthur Mattei',
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ],
                 ),
               ),

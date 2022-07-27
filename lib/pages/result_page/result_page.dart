@@ -12,6 +12,8 @@ class ResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final winner = gameController.winner == 'player' ? 'Jogador' : 'Máquina';
+    final correctPercent = gameController.calcCorrectPercent();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Resultados'),
@@ -21,8 +23,15 @@ class ResultPage extends StatelessWidget {
         padding: const EdgeInsets.all(12.0),
         child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Text('Vencedor: $winner'),
+            Text('placar:'),
             Text('Máquina: ${playerController.machine.value.totalWins}'),
             Text('Jogador: ${playerController.player.value.totalWins}'),
+            Text('estatísticas da partida:'),
+            Text('Palavra escolhida: ${gameController.choosedWord.value}'),
+            Text('Dica: ${gameController.choosedHint.value}'),
+            Text(
+                'Porcentagem de acerto: ${correctPercent.toStringAsFixed(0)}%'),
             ElevatedButton(
               onPressed: () {
                 gameController.reseteGame();

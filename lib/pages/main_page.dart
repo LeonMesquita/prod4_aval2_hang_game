@@ -44,14 +44,14 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Logo(),
+            //Expanded(child: SizedBox()),
             StartButton(
                 title: 'Play',
-                color: Colors.white,
+                color: HangTheme.color,
                 action: () {
                   gameController.startGame();
                   Get.offNamed(PagesRoutes.gamePage);
                 }),
-            StartButton(title: 'Result', color: HangTheme.color, action: () {}),
           ],
         ),
       ),

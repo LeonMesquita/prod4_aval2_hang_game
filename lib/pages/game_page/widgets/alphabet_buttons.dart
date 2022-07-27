@@ -54,13 +54,23 @@ class _AlphButtonState extends State<AlphButton> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Fim do jogo'),
+        actionsAlignment: MainAxisAlignment.center,
+        title: const Padding(
+          padding: EdgeInsets.only(bottom: 20),
+          child: Text(
+            'Fim do jogo!',
+            textAlign: TextAlign.center,
+          ),
+        ),
         actions: [
-          ElevatedButton(
-            onPressed: () {
-              Get.offNamed(PagesRoutes.resultPage);
-            },
-            child: const Text('Prosseguir para resultados'),
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: ElevatedButton(
+              onPressed: () {
+                Get.offNamed(PagesRoutes.resultPage);
+              },
+              child: const Text('Prosseguir para resultados'),
+            ),
           ),
         ],
       ),

@@ -12,6 +12,7 @@ class GameController extends GetxController {
   RxString choosedHint = ''.obs;
   RxString playerGuess = ''.obs;
   RxString correctGuesses = ''.obs;
+  RxInt percentCorrect = 0.obs;
   RxBool showHint = false.obs;
   RxBool finishedGame = false.obs;
   RxString winner = ''.obs;
@@ -76,6 +77,9 @@ class GameController extends GetxController {
     if (isAllCorrect) {
       finishedGame.value = true;
       winner.value = 'player';
+
+      print(choosedWord.value);
+      print(correctGuesses.value);
     }
   }
 
@@ -92,5 +96,20 @@ class GameController extends GetxController {
 
     //
     startGame();
+  }
+
+  double calcCorrectPercent() {
+    int totalCorrects = 0;
+    double totalPercent = 0;
+    final word = choosedWord.replaceAll(' ', '');
+    word.split('').forEach((ch) => {
+          if (correctGuesses.contains(ch))
+            {
+              totalCorrects++,
+            }
+        });
+
+    totalPercent = (totalCorrects * 100) / word.length;
+    return totalPercent;
   }
 }

@@ -26,7 +26,7 @@ class WordsBank {
       hint: 'banda de heavy metal',
     ),
     Word(
-      word: 'Variável Global',
+      word: 'variavel global',
       hint: 'variável usada por amadores',
     ),
     Word(
@@ -34,7 +34,7 @@ class WordsBank {
       hint: 'pai da computação',
     ),
     Word(
-      word: 'Mark Zuckerberg',
+      word: 'mark Zuckerberg',
       hint: 'programador que criou o facebook',
     ),
   ];
