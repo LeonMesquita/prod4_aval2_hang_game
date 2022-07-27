@@ -83,8 +83,8 @@ class _AlphButtonState extends State<AlphButton> {
     //se tiver, ele fica verde
     final statusColor =
         gameController.isCorrect(widget.buttonText.toLowerCase())
-            ? Colors.green
-            : Colors.red;
+            ? Color.fromARGB(255, 15, 218, 21)
+            : Color.fromARGB(255, 245, 27, 11);
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
