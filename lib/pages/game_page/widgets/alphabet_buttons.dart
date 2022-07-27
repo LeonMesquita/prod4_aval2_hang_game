@@ -91,7 +91,7 @@ class _AlphButtonState extends State<AlphButton> {
         height: 32,
         width: 32,
         decoration: BoxDecoration(
-          color: !isSelected ? Colors.blue : statusColor,
+          color: !isSelected ? Color.fromARGB(255, 4, 136, 243) : statusColor,
           borderRadius: BorderRadius.circular(5),
         ),
         child: Obx(() => TextButton(

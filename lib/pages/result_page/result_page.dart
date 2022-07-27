@@ -18,7 +18,7 @@ class ResultPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Resultados'),
       ),
-      backgroundColor: Colors.blueAccent,
+      //   backgroundColor: Colors.blueAccent,
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Center(
