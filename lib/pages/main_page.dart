@@ -48,6 +48,7 @@ class HomePage extends StatelessWidget {
                 title: 'Play',
                 color: Colors.white,
                 action: () {
+                  gameController.startGame();
                   Get.offNamed(PagesRoutes.gamePage);
                 }),
             StartButton(title: 'Result', color: HangTheme.color, action: () {}),
