@@ -3,6 +3,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:prod4_aval2_hang_game/controllers/game_controller.dart';
+import 'package:prod4_aval2_hang_game/theme/theme.dart';
 
 import 'widgets/alphabet_buttons.dart';
 import 'widgets/dash.dart';
@@ -56,7 +57,7 @@ class GamePage extends StatelessWidget {
                             style: const TextStyle(
                                 fontSize: 25,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black),
+                                color: HangTheme.color),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -73,7 +74,7 @@ class GamePage extends StatelessWidget {
                     ),
                     const Text(
                       'Dupla: Leonardo Mesquita e Arthur Mattei',
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: HangTheme.color),
                     ),
                   ],
                 ),
