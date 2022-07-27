@@ -26,15 +26,14 @@ class ResultPage extends StatelessWidget {
         padding: const EdgeInsets.all(12.0),
         child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            textoSupimpa('Vencedor: $winner'),
-            textoSupimpa('placar:'),
-            textoSupimpa(
-                'Máquina: ${playerController.machine.value.totalWins}'),
-            textoSupimpa('Jogador: ${playerController.player.value.totalWins}'),
-            textoSupimpa(
+            resultText('Vencedor: $winner'),
+            resultText('placar:'),
+            resultText('Máquina: ${playerController.machine.value.totalWins}'),
+            resultText('Jogador: ${playerController.player.value.totalWins}'),
+            resultText(
                 'Palavra escolhida: ${gameController.choosedWord.value}'),
-            textoSupimpa('Dica: ${gameController.choosedHint.value}'),
-            textoSupimpa(
+            resultText('Dica: ${gameController.choosedHint.value}'),
+            resultText(
                 'Porcentagem de acerto: ${correctPercent.toStringAsFixed(0)}%'),
             ElevatedButton(
               onPressed: () {
@@ -50,9 +49,9 @@ class ResultPage extends StatelessWidget {
   }
 }
 
-Widget textoSupimpa(texto) {
+Widget resultText(text) {
   return Text(
-    texto,
+    text,
     style: const TextStyle(fontSize: 24, color: HangTheme.color),
   );
 }
