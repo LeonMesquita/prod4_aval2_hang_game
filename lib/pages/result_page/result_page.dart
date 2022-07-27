@@ -25,7 +25,12 @@ class ResultPage extends StatelessWidget {
                 ),
               ),
             ),
-            List
+            ListTile(
+              title: const Text('Results of the last game'),
+              trailing: const Icon(Icons.chevron_right),
+            ),
+            const SizedBox(height: 60),
+            const ResultPage(),
           ],
         ),
       ),
