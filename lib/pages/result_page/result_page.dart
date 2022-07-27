@@ -16,45 +16,26 @@ class ResultPage extends StatelessWidget {
     final correctPercent = gameController.calcCorrectPercent();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Resultados'),
+        title: const Text(
+          'Resultados',
+          style: TextStyle(color: HangTheme.color),
+        ),
       ),
       //   backgroundColor: Colors.blueAccent,
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text(
-              'Vencedor: $winner',
-              style: TextStyle(fontSize: 24),
-            ),
-            Text(
-              'placar:',
-              style: TextStyle(fontSize: 24),
-            ),
-            Text(
-              'Máquina: ${playerController.machine.value.totalWins}',
-              style: TextStyle(fontSize: 24),
-            ),
-            Text(
-              'Jogador: ${playerController.player.value.totalWins}',
-              style: TextStyle(fontSize: 24),
-            ),
-            Text(
-              'estatísticas da partida:',
-              style: TextStyle(fontSize: 24),
-            ),
-            Text(
-              'Palavra escolhida: ${gameController.choosedWord.value}',
-              style: TextStyle(fontSize: 24),
-            ),
-            Text(
-              'Dica: ${gameController.choosedHint.value}',
-              style: TextStyle(fontSize: 24),
-            ),
-            Text(
-              'Porcentagem de acerto: ${correctPercent.toStringAsFixed(0)}%',
-              style: TextStyle(fontSize: 24),
-            ),
+            textoSupimpa('Vencedor: $winner'),
+            textoSupimpa('placar:'),
+            textoSupimpa(
+                'Máquina: ${playerController.machine.value.totalWins}'),
+            textoSupimpa('Jogador: ${playerController.player.value.totalWins}'),
+            textoSupimpa(
+                'Palavra escolhida: ${gameController.choosedWord.value}'),
+            textoSupimpa('Dica: ${gameController.choosedHint.value}'),
+            textoSupimpa(
+                'Porcentagem de acerto: ${correctPercent.toStringAsFixed(0)}%'),
             ElevatedButton(
               onPressed: () {
                 gameController.reseteGame();
@@ -67,4 +48,11 @@ class ResultPage extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget textoSupimpa(texto) {
+  return Text(
+    texto,
+    style: const TextStyle(fontSize: 24, color: HangTheme.color),
+  );
 }
