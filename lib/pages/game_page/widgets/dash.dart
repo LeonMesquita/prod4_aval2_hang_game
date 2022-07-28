@@ -47,7 +47,7 @@ class Dashe extends StatelessWidget {
           ),
           Container(
             width: 25,
-            height: 3,
+            height: 4,
             color: Colors.black,
           ),
         ],

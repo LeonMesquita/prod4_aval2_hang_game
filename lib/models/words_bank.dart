@@ -35,7 +35,15 @@ class WordsBank {
     ),
     Word(
       word: 'mark zuckerberg',
-      hint: 'programador que criou o facebook',
+      hint: 'criador de rede social famosa',
+    ),
+    Word(
+      word: 'abraham lincoln',
+      hint: 'famoso presidente dos EUA',
+    ),
+    Word(
+      word: 'sorvete',
+      hint: 'é gelado',
     ),
   ];
 

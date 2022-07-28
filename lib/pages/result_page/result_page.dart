@@ -12,8 +12,12 @@ class ResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final winner = gameController.winner == 'player' ? 'Jogador' : 'Máquina';
+    final winner =
+        gameController.winner.value == 'player' ? 'Jogador' : 'Máquina';
     final correctPercent = gameController.calcCorrectPercent();
+    final guesses = gameController.correctGuesses.value;
+    final correctGuesses =
+        guesses.isNotEmpty ? guesses.replaceAll('', ' ') : 'Nenhuma letra';
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -21,37 +25,83 @@ class ResultPage extends StatelessWidget {
           style: TextStyle(color: HangTheme.color),
         ),
       ),
-      //   backgroundColor: Colors.blueAccent,
       body: Padding(
         padding: const EdgeInsets.all(12.0),
-        child: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            resultText('Vencedor: $winner'),
-            resultText('placar:'),
-            resultText('Máquina: ${playerController.machine.value.totalWins}'),
-            resultText('Jogador: ${playerController.player.value.totalWins}'),
-            resultText(
-                'Palavra escolhida: ${gameController.choosedWord.value}'),
-            resultText('Dica: ${gameController.choosedHint.value}'),
-            resultText(
-                'Porcentagem de acerto: ${correctPercent.toStringAsFixed(0)}%'),
-            ElevatedButton(
-              onPressed: () {
-                gameController.reseteGame();
-                Get.offNamed(PagesRoutes.gamePage);
-              },
-              child: Text('Reiniciar jogo'),
-            ),
-          ]),
-        ),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                  child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    resultText('Vencedor:  $winner'),
+                    resultText('placar:'),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        placarContainer(resultText(
+                            'Máquina: ${playerController.machine.value.totalWins}')),
+                        placarContainer(resultText(
+                            'Jogador: ${playerController.player.value.totalWins}')),
+                      ],
+                    ),
+                    resultText(
+                        'Palavra escolhida: ${gameController.choosedWord.value}'),
+                    resultText('Dica: ${gameController.choosedHint.value}'),
+                    resultText(
+                        'Quantidade de chutes: ${gameController.playerGuess.value.length}'),
+                    if (gameController.winner.value == 'machine')
+                      resultText('Letras acertadas: ${correctGuesses}'),
+                    if (gameController.winner.value == 'machine')
+                      resultText(
+                          'Porcentagem de acerto: ${correctPercent.toStringAsFixed(0)}%'),
+                  ],
+                ),
+              )),
+              ElevatedButton(
+                onPressed: () {
+                  gameController.reseteGame();
+                  Get.offNamed(PagesRoutes.gamePage);
+                },
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Text(
+                    'Reiniciar jogo',
+                    style: TextStyle(fontSize: 25),
+                  ),
+                ),
+              ),
+            ]),
       ),
     );
   }
 }
 
 Widget resultText(text) {
-  return Text(
-    text,
-    style: const TextStyle(fontSize: 24, color: HangTheme.color),
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 10),
+    child: Text(
+      text,
+      style: const TextStyle(fontSize: 24, color: HangTheme.color),
+      textAlign: TextAlign.center,
+    ),
+  );
+}
+
+Widget placarContainer(child) {
+  return Expanded(
+    child: Padding(
+      padding: const EdgeInsets.only(bottom: 15),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: HangTheme.color,
+            width: 2,
+          ),
+        ),
+        child: child,
+      ),
+    ),
   );
 }
