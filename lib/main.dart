@@ -9,8 +9,8 @@ import 'package:prod4_aval2_hang_game/pages/main_page.dart';
 import 'package:prod4_aval2_hang_game/theme/theme.dart';
 
 void main() {
-  Get.lazyPut<GameController>(() => GameController());
-  Get.lazyPut<PlayerController>(() => PlayerController());
+  Get.put(GameController());
+  Get.put(PlayerController());
   runApp(const MyApp());
 }
 
